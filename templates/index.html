@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body onload='setTimer()'>
+    <div class="container">
+        <h1>Counter</h1>
+        <h3><span id="number_display">{{ num_visits }}</span> visit(s)</h3>
+        <div class="button_div">
+            <form action="/plus2" method="post">
+                <input class="button1" type="submit" value="+2">
+            </form>
+            <form action="/reset_button" method="post">
+                <input class="button2" type="submit" value="Reset">
+            </form>
+        </div>
+        <form action="/custom_increment" method="post">
+            <input onchange="changeSliderValue()" type="range" name="custom_increment" id="custom_increment_slider" min="1", max="100" value="1">
+            <input class="button3" type="submit" value="Increment 1" id="custom_increment_submit">
+        </form>
+        <h6>But you can't fool the real counter: <span id="real_number_display">{{ num_real_visits }}</span> REAL visit(s)</h6>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
